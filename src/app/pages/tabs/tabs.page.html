@@ -1,0 +1,17 @@
+<ion-tabs>
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="project-list" href="/tabs/project-list">
+      <ion-icon aria-hidden="true" name="triangle"></ion-icon>
+      <ion-label>Project List</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button
+      tab="add-project"
+      href="/tabs/add-project"
+      (click)="onClick()"
+    >
+      <ion-icon aria-hidden="true" name="square"></ion-icon>
+      <ion-label>Add Project</ion-label>
+    </ion-tab-button>
+  </ion-tab-bar>
+</ion-tabs>

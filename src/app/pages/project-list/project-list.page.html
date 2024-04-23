@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>List of Projects</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid *ngIf="!projects.length" class="no-data-section">
+    <ion-row>
+      <ion-col>
+        <ion-text>
+          No project found. Please add to see the project list.
+        </ion-text>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-button routerLink="/tabs/add-project"> Add Project </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-list *ngIf="projects.length">
+    <ion-item *ngFor="let project of projects">
+      <ion-label>{{ project.name }}</ion-label>
+      <ion-button (click)="viewProjectDetails(project.id)">
+        View Details
+      </ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
