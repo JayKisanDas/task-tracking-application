@@ -5,23 +5,37 @@
 </ion-header>
 
 <ion-content>
-  <ion-list *ngFor="let task of tasks">
-    <ion-list-header style="font-size: 20px">
-      <ion-label>{{ task.name }}</ion-label>
-      <ion-button (click)="deleteTask(task.id)">
-        <ion-icon :icon="trash"></ion-icon>
-      </ion-button>
-      <ion-button (click)="editTask(task.id)">
-        <ion-icon :icon="create"></ion-icon>
-      </ion-button>
-    </ion-list-header>
-    <ion-item style="font-size: 12px">
-      <ion-label>
-        <b>Task Description:&nbsp;&nbsp;</b>
-        <i>{{ task.description }}</i>
-      </ion-label>
-    </ion-item>
-  </ion-list>
+  <ion-grid [ngClass]="!tasks.length ? 'no-data-section' : ''">
+    <ion-row *ngIf="!tasks.length">
+      <ion-col>
+        <ion-text>
+          No task found. Please add to see the task assigned to this project.
+        </ion-text>
+      </ion-col>
+    </ion-row>
 
-  <ion-button (click)="addTask()"> Add Task </ion-button>
+    <ion-list *ngFor="let task of tasks">
+      <ion-list-header style="font-size: 20px">
+        <ion-label>{{ task.name }}</ion-label>
+        <ion-button (click)="deleteTask(task.id)">
+          <ion-icon :icon="trash"></ion-icon>
+        </ion-button>
+        <ion-button (click)="editTask(task.id)">
+          <ion-icon :icon="create"></ion-icon>
+        </ion-button>
+      </ion-list-header>
+      <ion-item style="font-size: 12px">
+        <ion-label>
+          <b>Description:&nbsp;&nbsp;</b>
+          <i>{{ task.description }}</i>
+        </ion-label>
+      </ion-item>
+    </ion-list>
+
+    <ion-row>
+      <ion-col>
+        <ion-button (click)="addTask()"> Add Task </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

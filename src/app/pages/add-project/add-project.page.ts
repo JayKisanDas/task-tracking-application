@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 import { Task } from '../../models/task.model';
 import { DataService } from '../../service/data.service';
 import { Project } from 'src/app/models/project.model';
-import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-project',
@@ -56,7 +56,12 @@ export class AddProjectPage implements OnInit {
   }
 
   addAnotherTask(): void {
-    if (this.taskName && this.taskDescription) {
+    if (
+      this.projectName &&
+      this.projectDescription &&
+      this.taskName &&
+      this.taskDescription
+    ) {
       const taskObj: Task = {
         id: Math.floor(Math.random() * 1000), // GENERATE A UNIQUE ID FOR THE TASK
         projectId: this.projectId,
@@ -69,12 +74,18 @@ export class AddProjectPage implements OnInit {
 
       if (this.isExistingProjectId) {
         this.dataService.addTask([taskObj]);
+        this.dataService.presentToast(
+          'New task added successfully for the Project Id: ' + taskObj.projectId
+        );
       }
 
       this.taskName = '';
       this.taskDescription = '';
     } else {
-      alert('Enter task name & description to add a task.');
+      this.dataService.presentToast(
+        'Enter project & task details to add a task.',
+        'danger'
+      );
     }
   }
 
@@ -91,19 +102,28 @@ export class AddProjectPage implements OnInit {
     }
 
     if (this.projectName && this.projectDescription) {
-      if (!this.projectId) {
-        this.projectId = Math.floor(100 + Math.random() * 900); // GENERATE A UNIQUE ID FOR THE PROJECT
-      }
-
       this.dataService.addProject(projectObj);
       this.dataService.addTask(this.tasks);
+      this.dataService.presentToast(
+        "Project and it's task added successfully."
+      );
+
+      console.log(
+        this.dataService.getAllProjects(),
+        this.dataService.getAllTasks()
+      );
 
       // CLEARING ALL THE INPUT FIELDS
       this.projectName = '';
       this.projectDescription = '';
-      this.projectId = 0;
+      this.tasks = [];
+      this.projectId = Math.floor(100 + Math.random() * 900); // GENERATE A UNIQUE ID FOR THE PROJECT
+      projectObj.id = this.projectId;
     } else {
-      alert('Enter project name & description to add a project.');
+      this.dataService.presentToast(
+        'Enter project name & description to add a project.',
+        'danger'
+      );
     }
   }
 

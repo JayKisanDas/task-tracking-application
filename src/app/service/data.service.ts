@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { ToastController } from '@ionic/angular';
 
 import { Project } from '../models/project.model';
 import { Task } from '../models/task.model';
@@ -10,7 +11,7 @@ export class DataService {
   private projects: Project[] = [];
   private tasks: Task[] = [];
 
-  constructor() {}
+  constructor(private toastController: ToastController) {}
 
   getAllProjects(): Project[] {
     // RETRIEVE PROJECT DATA FROM LOCAL STORAGE
@@ -71,7 +72,7 @@ export class DataService {
     if (index !== -1) {
       tasks[index] = task;
       localStorage.setItem('tasks', JSON.stringify(tasks));
-      alert('Task has been updated.');
+      this.presentToast('Task has been updated.');
     }
   }
 
@@ -82,5 +83,23 @@ export class DataService {
     this.tasks = this.tasks.filter((task) => task.id !== taskId);
   }
 
-  // You can implement more CRUD operations as needed
+  /**
+   * PRESENT TOAST MESSAGE
+   *
+   * @param position
+   */
+  async presentToast(
+    message: string,
+    color: string = 'success',
+    position: 'top' | 'middle' | 'bottom' = 'bottom'
+  ) {
+    const toast = await this.toastController.create({
+      message,
+      duration: 1500,
+      position: position,
+      color,
+    });
+
+    await toast.present();
+  }
 }

@@ -19,12 +19,27 @@
       </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-list *ngIf="projects.length">
-    <ion-item *ngFor="let project of projects">
-      <ion-label>{{ project.name }}</ion-label>
-      <ion-button (click)="viewProjectDetails(project.id)">
-        View Details
-      </ion-button>
-    </ion-item>
-  </ion-list>
+
+  <ion-grid *ngIf="projects.length">
+    <ion-list class="project-list" *ngFor="let project of projects">
+      <ion-row>
+        <ion-col>
+          <ion-list-header>
+            <ion-label>{{ project.name }}</ion-label>
+          </ion-list-header>
+          <ion-item lines="none">
+            <ion-label>
+              <b>Description:&nbsp;&nbsp;</b>
+              <i>{{ project.description }}</i>
+            </ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col class="view-details-btn">
+          <ion-button (click)="viewProjectDetails(project.id)">
+            View Details
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
 </ion-content>

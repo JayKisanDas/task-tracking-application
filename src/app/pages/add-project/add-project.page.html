@@ -42,10 +42,22 @@
       ></ion-input>
     </ion-item>
 
+    <ion-text
+      style="
+        text-align: center;
+        display: block;
+        margin-top: 15px;
+        font-size: 12px;
+      "
+      *ngIf="!isExistingProjectId"
+    >
+      <b>Note:</b> Click on "ADD PROJECT" button to save the project and task.
+    </ion-text>
+
     <div class="btn-center">
-      <ion-button *ngIf="!isExistingTaskId" (click)="addAnotherTask()"
-        >Add Another Task</ion-button
-      >
+      <ion-button *ngIf="!isExistingTaskId" (click)="addAnotherTask()">
+        Add Another Task
+      </ion-button>
       <ion-button *ngIf="isExistingTaskId" (click)="updateTaskDetails()">
         Update Task
       </ion-button>

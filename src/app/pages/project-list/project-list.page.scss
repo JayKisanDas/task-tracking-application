@@ -3,3 +3,32 @@
   align-items: center;
   flex-direction: column;
 }
+
+.project-list {
+  margin-top: 15px;
+
+  ion-row {
+    ion-col {
+      ion-list-header {
+        font-size: 20px;
+      }
+
+      ion-item {
+        font-size: 12px;
+
+        ion-label {
+          margin: 0;
+        }
+
+        &::part(native) {
+          --min-height: 16px;
+        }
+      }
+
+      &.view-details-btn {
+        display: flex;
+        justify-content: end;
+      }
+    }
+  }
+}

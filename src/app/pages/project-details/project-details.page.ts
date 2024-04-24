@@ -37,6 +37,7 @@ export class ProjectDetailsPage implements OnInit, ViewDidEnter {
   deleteTask(taskId: number) {
     this.dataService.deleteTask(taskId);
     this.tasks = this.dataService.getTasksByProjectId(this.projectId);
+    this.dataService.presentToast('Task deleted successfully.');
   }
 
   editTask(taskId: number) {
