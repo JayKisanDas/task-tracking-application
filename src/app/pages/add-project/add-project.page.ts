@@ -77,6 +77,10 @@ export class AddProjectPage implements OnInit {
         this.dataService.presentToast(
           'New task added successfully for the Project Id: ' + taskObj.projectId
         );
+      } else {
+        this.dataService.presentToast(
+          'New task added successfully. Click on ADD PROJECT to save the project along with the task.'
+        );
       }
 
       this.taskName = '';
