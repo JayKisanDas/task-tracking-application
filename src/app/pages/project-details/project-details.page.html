@@ -14,8 +14,8 @@
       </ion-col>
     </ion-row>
 
-    <ion-list *ngFor="let task of tasks">
-      <ion-list-header style="font-size: 20px">
+    <ion-list class="task-list" *ngFor="let task of tasks">
+      <ion-list-header>
         <ion-label>{{ task.name }}</ion-label>
         <ion-button (click)="deleteTask(task.id)">
           <ion-icon :icon="trash"></ion-icon>
@@ -24,7 +24,7 @@
           <ion-icon :icon="create"></ion-icon>
         </ion-button>
       </ion-list-header>
-      <ion-item style="font-size: 12px">
+      <ion-item>
         <ion-label>
           <b>Description:&nbsp;&nbsp;</b>
           <i>{{ task.description }}</i>

@@ -3,3 +3,23 @@
   align-items: center;
   flex-direction: column;
 }
+
+.task-list {
+  margin: 10px;
+
+  ion-list-header {
+    font-size: 20px;
+  }
+
+  ion-item {
+    font-size: 12px;
+
+    ion-label {
+      margin: 0;
+    }
+
+    &::part(native) {
+      --min-height: 16px;
+    }
+  }
+}
