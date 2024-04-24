@@ -12,6 +12,7 @@
         name="projectName"
         type="text"
         [(ngModel)]="projectName"
+        [disabled]="isExistingTaskId"
         required
       ></ion-input>
     </ion-item>
@@ -21,6 +22,8 @@
         name="projectDescription"
         type="text"
         [(ngModel)]="projectDescription"
+        [disabled]="isExistingTaskId"
+        required
       ></ion-input>
     </ion-item>
 
@@ -39,6 +42,7 @@
         name="taskDescription"
         type="text"
         [(ngModel)]="taskDescription"
+        required
       ></ion-input>
     </ion-item>
 
