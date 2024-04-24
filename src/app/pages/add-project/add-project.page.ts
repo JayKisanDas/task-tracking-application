@@ -4,13 +4,14 @@ import { ActivatedRoute } from '@angular/router';
 import { Task } from '../../models/task.model';
 import { DataService } from '../../service/data.service';
 import { Project } from 'src/app/models/project.model';
+import { ViewDidEnter } from '@ionic/angular';
 
 @Component({
   selector: 'app-add-project',
   templateUrl: 'add-project.page.html',
   styleUrls: ['add-project.page.scss'],
 })
-export class AddProjectPage implements OnInit {
+export class AddProjectPage implements OnInit, ViewDidEnter {
   projectName: string = '';
   projectDescription: string = '';
   taskName: string = '';
@@ -41,6 +42,7 @@ export class AddProjectPage implements OnInit {
       } else {
         this.isExistingProjectId = false;
         this.projectName = this.projectDescription = '';
+        this.projectId = Math.floor(100 + Math.random() * 900); // GENERATE A UNIQUE ID FOR THE PROJECT
       }
 
       if (tId) {
@@ -53,6 +55,12 @@ export class AddProjectPage implements OnInit {
         this.taskName = this.taskDescription = '';
       }
     });
+  }
+
+  ionViewDidEnter(): void {
+    if (!this.isExistingProjectId) {
+      this.projectId = Math.floor(100 + Math.random() * 900); // GENERATE A UNIQUE ID FOR THE PROJECT
+    }
   }
 
   addAnotherTask(): void {

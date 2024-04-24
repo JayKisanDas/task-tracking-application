@@ -7,43 +7,76 @@
 <ion-content>
   <form (submit)="addProject()">
     <ion-item>
-      <ion-label position="floating">Project Name</ion-label>
+      <!-- <ion-label position="floating">Project Name</ion-label> -->
       <ion-input
         name="projectName"
         type="text"
+        fill="solid"
+        label="Project Name"
+        labelPlacement="floating"
         [(ngModel)]="projectName"
-        [disabled]="isExistingTaskId"
+        [disabled]="isExistingTaskId || isExistingProjectId"
         required
       ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Project Description</ion-label>
-      <ion-input
+      <!-- <ion-label position="floating">Project Description</ion-label> -->
+      <!-- <ion-input
         name="projectDescription"
         type="text"
+        fill="solid"
+        label="Project Description"
+        labelPlacement="floating"
         [(ngModel)]="projectDescription"
-        [disabled]="isExistingTaskId"
+        [disabled]="isExistingTaskId || isExistingProjectId"
         required
-      ></ion-input>
+      ></ion-input> -->
+
+      <ion-textarea
+        name="projectDescription"
+        type="text"
+        fill="solid"
+        label="Project Description"
+        labelPlacement="floating"
+        [(ngModel)]="projectDescription"
+        [disabled]="isExistingTaskId || isExistingProjectId"
+        required
+      ></ion-textarea>
     </ion-item>
 
     <ion-item>
-      <ion-label position="floating">Task Name</ion-label>
+      <!-- <ion-label position="floating">Task Name</ion-label> -->
       <ion-input
         name="taskName"
         type="text"
+        fill="solid"
+        label="Task Name"
+        labelPlacement="floating"
         [(ngModel)]="taskName"
         required
       ></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label position="floating">Task Description</ion-label>
-      <ion-input
+      <!-- <ion-label position="floating">Task Description</ion-label> -->
+      <!-- <ion-input
         name="taskDescription"
         type="text"
+        fill="solid"
+        label="Task Description"
+        labelPlacement="floating"
         [(ngModel)]="taskDescription"
         required
-      ></ion-input>
+      ></ion-input> -->
+
+      <ion-textarea
+        name="taskDescription"
+        type="text"
+        fill="solid"
+        label="Task Description"
+        labelPlacement="floating"
+        [(ngModel)]="taskDescription"
+        required
+      ></ion-textarea>
     </ion-item>
 
     <ion-text

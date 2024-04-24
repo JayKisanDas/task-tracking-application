@@ -31,4 +31,9 @@ export class ProjectListPage implements OnInit, ViewDidEnter {
   viewProjectDetails(projectId: number): void {
     this.router.navigateByUrl(`tabs/project-details/${projectId}`);
   }
+
+  deleteProject(projectId: number): void {
+    this.dataService.deleteProject(projectId);
+    this.projects = this.dataService.getAllProjects();
+  }
 }

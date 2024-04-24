@@ -3,3 +3,10 @@
   justify-content: center;
   margin-top: 20px;
 }
+
+form {
+  ion-input,
+  ion-textarea {
+    margin-bottom: 15px;
+  }
+}

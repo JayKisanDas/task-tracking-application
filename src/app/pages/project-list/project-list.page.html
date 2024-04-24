@@ -38,6 +38,9 @@
           <ion-button (click)="viewProjectDetails(project.id)">
             View Details
           </ion-button>
+          <ion-button (click)="deleteProject(project.id)">
+            <ion-icon :icon="trash"></ion-icon>
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-list>
